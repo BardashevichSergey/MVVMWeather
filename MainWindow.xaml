@@ -46,7 +46,8 @@
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <TextBox Grid.Row="0" Text="textbox1"/>
+            <Label Grid.Row="0" Content="dad" Margin="0,0,0,121" ></Label>
+            <TextBox Grid.Row="0" Text="textbox1" Margin="0,27,0,0"/>
             <GridSplitter Grid.Row="1" Grid.ColumnSpan="3" Height="3"
         HorizontalAlignment="Stretch" VerticalAlignment="Center" />
             <TextBox Grid.Row="2" Text="textbox2" />
