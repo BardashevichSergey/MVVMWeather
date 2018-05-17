@@ -5,15 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MVVMWeather"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350.667" Width="525" 
+        Title="MainWindow" Height="350.667" Width="849.667" 
         MinHeight="300" MinWidth="500">
     <Window.DataContext>
         <local:ViewModel/>
     </Window.DataContext>
     <Grid>
         <Grid Margin="5,5,0,10" HorizontalAlignment="Left" Width="209">
-            <ListBox Grid.Column="0" ItemsSource="{Binding CityList2}"
-                 SelectedItem="{Binding SelectedCity}" Margin="0,29,0,33">
+            <ListBox Grid.Column="0" ItemsSource="{Binding CityList}"
+                 SelectedItem="{Binding SelectedCity}"  Margin="0,29,0,33">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Margin="5">
@@ -38,7 +38,7 @@
             <TextBlock Text="Производитель" />
             <TextBox Text="{Binding Id, UpdateSourceTrigger=PropertyChanged}" />
             <TextBlock Text="Цена" />
-            <TextBox Text="{Binding Price, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBox Text="{Binding Weather, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
         <Grid HorizontalAlignment="Left" Height="300" Margin="219,10,0,0" Width="293">
             <Grid.RowDefinitions>
@@ -51,6 +51,20 @@
             <GridSplitter Grid.Row="1" Grid.ColumnSpan="3" Height="3"
         HorizontalAlignment="Stretch" VerticalAlignment="Center" />
             <TextBox Grid.Row="2" Text="textbox2" />
+            <TreeView x:Name="treeView" HorizontalAlignment="Left" Height="215" Margin="24,61,0,0" Grid.RowSpan="3" VerticalAlignment="Top" Width="153">
+                <HierarchicalDataTemplate ItemsSource="{Binding Path=root}">
+                    <TextBlock Text="{Binding Name}" />
+                </HierarchicalDataTemplate>
+            </TreeView>
+            <TreeView x:Name="treeView1" Margin="312,0,-312,0" ItemsSource="{Binding CityList}" SelectedItemChanged="treeView1_SelectedItemChanged">
+                
+                <TreeView.ItemTemplate>
+                    <HierarchicalDataTemplate  ItemsSource="{Binding Path = Cities}" >
+                        <TextBlock Text="{Binding Name}" />
+                    
+                    </HierarchicalDataTemplate>
+                </TreeView.ItemTemplate>
+            </TreeView>
         </Grid>
 
     </Grid>

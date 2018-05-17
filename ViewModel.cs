@@ -9,34 +9,47 @@ using System.Collections.ObjectModel;
 
 namespace MVVMWeather
 {
+  
+
     class ViewModel : INotifyPropertyChanged
     {
-        private MainModel model = new MainModel();
-        public ObservableCollection<City> CityList2 => model.CityList;
-
-
-
-        private City selectedCity;
-        public ObservableCollection<City> CityList { get; set; }
-        public City SelectedCity
+        MainModel m;
+        ObservableCollection<Node> nodes;
+        private Node selectedCity;
+        public ObservableCollection<Node> CityList { get; set; }
+        public ObservableCollection<Node> Nodes2
+        {
+            get { return nodes; }
+            set
+            {
+                nodes = value;
+                OnPropertyChanged("Nodes2");
+            }
+        }
+        
+        public Node SelectedCity
+        {
+            get { return selectedCity; }
+            set
+            {
+                m.SelectedCity =  value;
+                selectedCity = m.SelectedCity;
+                OnPropertyChanged("SelectedCity");
+            }
+        }
+        public Node IsSelected
         {
             get { return selectedCity; }
             set
             {
                 selectedCity = value;
-                OnPropertyChanged("SelectedCity");
+                OnPropertyChanged("IsSelected");
             }
         }
-
         public ViewModel()
         {
-            CityList = new ObservableCollection<City>
-            {
-                new City { Name="Брянск", Id = 1},
-                new City {Name="Москва", Id = 11 },
-                new City {Name="Казань", Id = 21 },
-                new City {Name="Омск", Id = 10 }
-            };
+            m = new MainModel();
+            CityList = m.Tree;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
