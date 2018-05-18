@@ -1,7 +1,6 @@
 D:\Files\dev\my\MVVMWeather\MVVMWeather\bin\Debug\MVVMWeather.exe.config
 D:\Files\dev\my\MVVMWeather\MVVMWeather\bin\Debug\MVVMWeather.exe
 D:\Files\dev\my\MVVMWeather\MVVMWeather\bin\Debug\MVVMWeather.pdb
-D:\Files\dev\my\MVVMWeather\MVVMWeather\obj\Debug\MVVMWeather.csprojResolveAssemblyReference.cache
 D:\Files\dev\my\MVVMWeather\MVVMWeather\obj\Debug\MainWindow.g.cs
 D:\Files\dev\my\MVVMWeather\MVVMWeather\obj\Debug\App.g.cs
 D:\Files\dev\my\MVVMWeather\MVVMWeather\obj\Debug\MVVMWeather_MarkupCompile.cache
@@ -12,4 +11,7 @@ D:\Files\dev\my\MVVMWeather\MVVMWeather\obj\Debug\MVVMWeather.Properties.Resourc
 D:\Files\dev\my\MVVMWeather\MVVMWeather\obj\Debug\MVVMWeather.csproj.GenerateResource.Cache
 D:\Files\dev\my\MVVMWeather\MVVMWeather\obj\Debug\MVVMWeather.exe
 D:\Files\dev\my\MVVMWeather\MVVMWeather\obj\Debug\MVVMWeather.pdb
-D:\Files\dev\my\MVVMWeather\MVVMWeather\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Files\dev\my\MVVMWeather\MVVMWeather\obj\Debug\MVVMWeather.csprojResolveAssemblyReference.cache
+D:\Files\dev\my\MVVMWeather\MVVMWeather\bin\Debug\HtmlAgilityPack.dll
+D:\Files\dev\my\MVVMWeather\MVVMWeather\bin\Debug\HtmlAgilityPack.pdb
+D:\Files\dev\my\MVVMWeather\MVVMWeather\bin\Debug\HtmlAgilityPack.xml

@@ -5,30 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MVVMWeather"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350.667" Width="849.667" 
+        Title="MainWindow" Height="350.667" Width="1126.334" 
         MinHeight="300" MinWidth="500">
-    <Window.DataContext>
-        <local:ViewModel/>
-    </Window.DataContext>
+
     <Grid>
-        <Grid Margin="5,5,0,10" HorizontalAlignment="Left" Width="209">
-            <ListBox Grid.Column="0" ItemsSource="{Binding CityList}"
-                 SelectedItem="{Binding SelectedCity}"  Margin="0,29,0,33">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Margin="5">
-                            <TextBlock FontSize="18" Text="{Binding Name}" />
-                            <TextBlock Text="{Binding Id}" />
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-            <Button x:Name="button" Content="Обновить дерево" HorizontalAlignment="Left" Margin="0,4,0,0" VerticalAlignment="Top" Width="102"/>
-            <Button x:Name="button1" Content="Обновить погоду" HorizontalAlignment="Left" Margin="107,4,0,0" VerticalAlignment="Top" Width="102"/>
-            <Button x:Name="button2" HorizontalAlignment="Left" Margin="134,0,0,7" Width="75" Height="21" VerticalAlignment="Bottom">
+        <Grid Margin="5,5,0,10" HorizontalAlignment="Left" Width="249">
+            <Button x:Name="button" Content="Обновить дерево" Margin="10,4,128,0" VerticalAlignment="Top"/>
+            <Button x:Name="button1" Command="{Binding AddCommand}" Content="Обновить погоду" Margin="126,4,10,0" VerticalAlignment="Top"/>
+            <Button x:Name="button2" Margin="164,0,10,7" Height="21" VerticalAlignment="Bottom">
                 <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="Поиск"/>
             </Button>
-            <TextBox x:Name="textBox" HorizontalAlignment="Left" Margin="0,0,0,7" TextWrapping="Wrap" Width="129" Height="21" VerticalAlignment="Bottom"/>
+            <TextBox x:Name="textBox" Margin="0,0,90,7" TextWrapping="Wrap" Height="21" VerticalAlignment="Bottom"/>
+            <TreeView x:Name="treeView1" Margin="0,29,0,33" ItemsSource="{Binding CityList}" SelectedItemChanged="treeView1_SelectedItemChanged">
+
+                <TreeView.ItemTemplate>
+                    <HierarchicalDataTemplate  ItemsSource="{Binding Cities}" >
+                        <TextBlock Text="{Binding Name}" />
+
+                    </HierarchicalDataTemplate>
+                </TreeView.ItemTemplate>
+            </TreeView>
 
         </Grid>
         <StackPanel DataContext="{Binding SelectedCity}" Margin="526,170,-302,10">
@@ -38,34 +34,24 @@
             <TextBlock Text="Производитель" />
             <TextBox Text="{Binding Id, UpdateSourceTrigger=PropertyChanged}" />
             <TextBlock Text="Цена" />
-            <TextBox Text="{Binding Weather, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBox Text="{Binding WeatherNow, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
-        <Grid HorizontalAlignment="Left" Height="300" Margin="219,10,0,0" Width="293">
+        <Grid DataContext="{Binding Weather}" HorizontalAlignment="Left" Margin="259,15,0,5" Width="293">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Label Grid.Row="0" Content="dad" Margin="0,0,0,121" ></Label>
-            <TextBox Grid.Row="0" Text="textbox1" Margin="0,27,0,0"/>
-            <GridSplitter Grid.Row="1" Grid.ColumnSpan="3" Height="3"
-        HorizontalAlignment="Stretch" VerticalAlignment="Center" />
-            <TextBox Grid.Row="2" Text="textbox2" />
-            <TreeView x:Name="treeView" HorizontalAlignment="Left" Height="215" Margin="24,61,0,0" Grid.RowSpan="3" VerticalAlignment="Top" Width="153">
-                <HierarchicalDataTemplate ItemsSource="{Binding Path=root}">
-                    <TextBlock Text="{Binding Name}" />
-                </HierarchicalDataTemplate>
-            </TreeView>
-            <TreeView x:Name="treeView1" Margin="312,0,-312,0" ItemsSource="{Binding CityList}" SelectedItemChanged="treeView1_SelectedItemChanged">
-                
-                <TreeView.ItemTemplate>
-                    <HierarchicalDataTemplate  ItemsSource="{Binding Path = Cities}" >
-                        <TextBlock Text="{Binding Name}" />
-                    
-                    </HierarchicalDataTemplate>
-                </TreeView.ItemTemplate>
-            </TreeView>
+            <TextBlock Grid.Row="0" Text="Сейчас" Height="148" VerticalAlignment="Top" />
+            <TextBox Grid.Row="0" Text="{Binding Now, UpdateSourceTrigger=PropertyChanged}" Margin="0,16,0,0" IsReadOnly="True"/>
+            <GridSplitter Grid.Row="1" Grid.ColumnSpan="3" Height="3" HorizontalAlignment="Stretch" VerticalAlignment="Center" />
+            <TextBlock Grid.Row="2" Text="Сегодня"/>
+            <TextBox Grid.Row="2" Text="{Binding Today,UpdateSourceTrigger=PropertyChanged}" Margin="0,19,0,0" />
+
         </Grid>
+        <StackPanel DataContext="{Binding SelectedCity}" Margin="829,15,-605,165">
+            <TextBox Text="{Binding WeatherNow, UpdateSourceTrigger=PropertyChanged}" />
+        </StackPanel>
 
     </Grid>
 </Window>
